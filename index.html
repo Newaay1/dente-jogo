@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="javascript.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Jogo dos dentes</title>
+</head>
+<style>
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    background: rgb(180,180,180);
+    background: linear-gradient(90deg, rgb(227, 251, 252) 10%, rgb(227, 251, 252) 90%);
+}
+
+.titulo {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: rgb(67, 195, 255);
+    font-size: 40px;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.caixas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.caixas img {
+    position: absolute;
+    margin-top: 30px;
+    width: 500px;
+    height: 500px;
+    background: none;
+}
+
+.caixa1{
+    margin-left: -30rem;
+}
+.caixa1 {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: none;
+}
+.caixa2{
+    position: absolute;
+    top: 186px;
+}
+
+.comidasdrag, .comidasdrag2 {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.comidasdrag, .comidasdrag2 img{
+    background-color: white;
+}
+
+img[draggable="true"] {
+    width: 70px; 
+    height: 70px; 
+    border-radius: 50%;
+    border: solid 2px;
+    margin-top: 30px;
+}
+
+
+.pergunta{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 117, 172);
+    font-size: 35px;
+    margin-top: 32px;
+    font-weight: 700;
+}
+.maternal{
+    background:none;
+    color: rgb(2, 83, 121);
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+.comidas img {
+    width: 70px; 
+    height: 70px; 
+    border-radius: 50%;
+    border: solid 2px;
+    visibility: hidden;
+}
+
+#burguer1, #cachorroquente1, #rosca1, #coca1, #cookie1, #fritas1, #sorvete1, #pizza1,
+#maca1, #brocolis1, #abacate1, #pera1, #laranja1, #morango1, #cenoura1, #uva1 {
+    position: absolute;
+}
+
+#burguer1 { top: 310px; left: 1055px; }
+#cachorroquente1 { top: 310px; left: 1300px; }
+#rosca1 { top: 555px; left: 1300px; }
+#coca1 { top: 555px; left: 1055px; }
+#cookie1 { top: 610px; left: 1180px; }
+#fritas1 { top: 250px; left: 1180px; }
+#sorvete1 { top: 430px; left: 1000px; }
+#pizza1 { top: 430px; left: 1355px; }
+#maca1 { top: 310px; left: 555px; }
+#brocolis1 { top: 310px; left: 805px; }
+#abacate1 { top: 255px; left: 680px; }
+#pera1 { top: 615px; left: 685px; }
+#uva1 { top: 435px; left: 500px; }
+#morango1 { top: 435px; left: 860px; }
+#laranja1 { top: 560px; left: 560px; }
+#cenoura1 { top: 560px; left: 805px; }
+
+.logo{
+    position: fixed;
+    width: 128px;
+}
+
+
+
+@media screen and (max-width: 1680px) {
+
+    .logo{
+        zoom: 80%;
+    }
+
+    #burguer1 { top: 306px; left: 932px; }
+    #cachorroquente1 { top: 306px; left: 1180px; }
+    #rosca1 { top: 560px; left: 1180px; }
+    #coca1 { top: 560px; left: 935px; }
+    #cookie1 { top: 610px; left: 1065px; }
+    #fritas1 { top: 250px; left: 1055px; }
+    #sorvete1 { top: 435px; left: 880px; }
+    #pizza1 { top: 435px; left: 1235px; }
+    #maca1 { top: 310px; left: 435px; }
+    #brocolis1 { top: 310px; left: 685px; }
+    #abacate1 { top: 255px; left: 560px; }
+    #pera1 { top: 615px; left: 565px; }
+    #uva1 { top: 435px; left: 380px; }
+    #morango1 { top: 435px; left: 740px; }
+    #laranja1 { top: 560px; left: 435px; }
+    #cenoura1 { top: 560px; left: 685px; }
+}
+@media (max-width: 1600px) {
+
+.logo{
+    zoom: 60%;
+}
+
+
+    #burguer1 { top: 306px; left: 895px; }
+#cachorroquente1 { top: 306px; left: 1143px; }
+#rosca1 { top: 560px; left: 1143px; }
+#coca1 { top: 560px; left: 898px; }
+#cookie1 { top: 610px; left: 1028px; }
+#fritas1 { top: 250px; left: 1018px; }
+#sorvete1 { top: 435px; left: 843px; }
+#pizza1 { top: 435px; left: 1198px; }
+#maca1 { top: 310px; left: 398px; }
+#brocolis1 { top: 310px; left: 648px; }
+#abacate1 { top: 255px; left: 523px; }
+#pera1 { top: 615px; left: 528px; }
+#uva1 { top: 435px; left: 343px; }
+#morango1 { top: 435px; left: 703px; }
+#laranja1 { top: 560px; left: 398px; }
+#cenoura1 { top: 560px; left: 648px; }
+}
+@media (max-width: 1400px) {
+    .caixa2{
+    top: 230px;
+}
+
+
+#burguer1 { top: 350px; left: 795px; }
+#cachorroquente1 { top: 350px; left: 1040px; }
+#rosca1 { top: 601px; left: 1040px; }
+#coca1 { top: 601px; left: 795px; }
+#cookie1 { top: 656px; left: 920px; }
+#fritas1 { top: 296px; left: 920px; }
+#sorvete1 { top: 476px; left: 740px; }
+#pizza1 { top: 476px; left: 1095px; }
+#maca1 { top: 354px; left: 295px; }
+#brocolis1 { top: 354px; left: 545px; }
+#abacate1 { top: 295px; left: 420px; }
+#pera1 { top: 655px; left: 425px; }
+#uva1 { top: 480px; left: 245px; }
+#morango1 { top: 480px; left: 600px; }
+#laranja1 { top: 605px; left: 300px; }
+#cenoura1 { top: 605px; left: 545px; }
+}
+@media (max-width: 1280px) {
+    #burguer1 { top: 350px; left: 735px; }
+#cachorroquente1 { top: 350px; left: 980px; }
+#rosca1 { top: 601px; left: 980px; }
+#coca1 { top: 601px; left: 735px; }
+#cookie1 { top: 656px; left: 860px; }
+#fritas1 { top: 296px; left: 860px; }
+#sorvete1 { top: 476px; left: 680px; }
+#pizza1 { top: 476px; left: 1035px; }
+#maca1 { top: 354px; left: 235px; }
+#brocolis1 { top: 354px; left: 485px; }
+#abacate1 { top: 295px; left: 360px; }
+#pera1 { top: 655px; left: 365px; }
+#uva1 { top: 480px; left: 185px; }
+#morango1 { top: 480px; left: 540px; }
+#laranja1 { top: 605px; left: 240px; }
+#cenoura1 { top: 605px; left: 485px; }
+.logo{
+    width: 72px;
+}
+}
+@media (max-width: 1024px) {
+    #burguer1 { top: 400px; left: 610px; }
+#cachorroquente1 { top: 400px; left: 855px; }
+#rosca1 { top: 651px; left: 855px; }
+#coca1 { top: 651px; left: 610px; }
+#cookie1 { top: 705px; left: 735px; }
+#fritas1 { top: 345px; left: 730px; }
+#sorvete1 { top: 526px; left: 550px; }
+#pizza1 { top: 526px; left: 910px; }
+#maca1 { top: 400px; left: 110px; }
+#brocolis1 { top: 400px; left: 360px; }
+#abacate1 { top: 345px; left: 235px; }
+#pera1 { top: 705px; left: 240px; }
+#uva1 { top: 526px; left: 55px; }
+#morango1 { top: 526px; left: 415px; }
+#laranja1 { top: 651px; left: 110px; }
+#cenoura1 { top: 651px; left: 360px; }
+
+
+.logo{
+    width: 92px;
+}
+
+.caixa2{
+    top: 280px;
+}
+}
+
+@media (max-width: 820px) {
+
+*{
+    zoom: 95%;
+}
+
+.titulo{
+    font-size: 24px;
+}
+
+.caixa2{
+    top: 296px;
+}
+
+#burguer1 { top: 410px; left: 590px; }
+#cachorroquente1 { top: 410px; left: 830px; }
+#rosca1 { top: 650px; left: 830px; }
+#coca1 { top: 650px; left: 590px; }
+#cookie1 { top: 700px; left: 715px; }
+#fritas1 { top: 355px; left: 710px; }
+#sorvete1 { top: 530px; left: 540px; }
+#pizza1 { top: 530px; left: 880px; }
+#maca1 { top: 410px; left: 90px; }
+#brocolis1 { top: 410px; left: 335px; }
+#abacate1 { top: 355px; left: 215px; }
+#pera1 { top: 700px; left: 220px; }
+#uva1 { top: 530px; left: 40px; }
+#morango1 { top: 530px; left: 385px; }
+#laranja1 { top: 650px; left: 95px; }
+#cenoura1 { top: 650px; left: 335px; }
+
+
+}
+
+@media (max-width: 800px) {
+
+#burguer1 { top: 410px; left: 585px; }
+#cachorroquente1 { top: 410px; left: 815px; }
+#rosca1 { top: 650px; left: 815px; }
+#coca1 { top: 650px; left: 585px; }
+#cookie1 { top: 700px; left: 700px; }
+#fritas1 { top: 355px; left: 700px; }
+#sorvete1 { top: 530px; left: 525px; }
+#pizza1 { top: 530px; left: 865px; }
+#maca1 { top: 410px; left: 85px; }
+#brocolis1 { top: 410px; left: 320px; }
+#abacate1 { top: 355px; left: 200px; }
+#pera1 { top: 700px; left: 205px; }
+#uva1 { top: 530px; left: 35px; }
+#morango1 { top: 530px; left: 370px; }
+#laranja1 { top: 650px; left: 85px; }
+#cenoura1 { top: 650px; left: 320px; }
+}
+
+@media (max-width: 500px) {
+
+*{
+    zoom: 85%;
+}
+
+.caixa1{
+    padding-top: 80px;
+}
+
+
+.caixa2{
+    top: 330px;
+}
+
+#burguer1 { top: 425px; left: 560px; }
+#cachorroquente1 { top: 425px; left: 770px; }
+#rosca1 { top: 645px; left: 770px; }
+#coca1 { top: 645px; left: 560px; }
+#cookie1 { top: 690px; left: 665px; }
+#fritas1 { top: 380px; left: 665px; }
+#sorvete1 { top: 535px; left: 510px; }
+#pizza1 { top: 535px; left: 810px; }
+#maca1 { top: 425px; left: 60px; } 
+#brocolis1 { top: 425px; left: 275px; }
+#abacate1 { top: 380px; left: 165px; }
+#pera1 { top: 690px; left: 165px; }
+#uva1 { top: 540px; left: 10px; } 
+#morango1 { top: 540px; left: 315px; }
+#laranja1 { top: 645px; left: 60px; } 
+#cenoura1 { top: 645px; left: 265px; }
+}
+
+@media (max-width: 450px) {
+
+*{
+    zoom: 83%;
+}
+
+.logo{
+    width: 64px;
+}
+
+.caixa1{
+    padding-top: 125px;
+}
+
+.caixa2{
+    top: 380px;
+}
+#burguer1 { top: 475px; left: 550px; }
+#cachorroquente1 { top: 475px; left: 750px; }
+#rosca1 { top: 685px; left: 750px; }
+#coca1 { top: 685px; left: 540px; }
+#cookie1 { top: 720px; left: 650px; }
+#fritas1 { top: 430px; left: 650px; }
+#sorvete1 { top: 580px; left: 505px; }
+#pizza1 { top: 585px; left: 790px; }
+#maca1 { top: 475px; left: 60px; }
+#brocolis1 { top: 475px; left: 255px; }
+#abacate1 { top: 430px; left: 160px; }
+#pera1 { top: 720px; left: 155px; }
+#uva1 { top: 570px; left: 10px; }
+#morango1 { top: 570px; left: 295px; }
+#laranja1 { top: 675px; left: 60px; }
+#cenoura1 { top: 675px; left: 265px; }
+}
+@media (max-width: 412px) {
+
+
+*{
+    zoom: 80%;
+}
+
+
+
+.caixa1{
+    padding-top: 100px;
+}
+
+.pergunta{
+    zoom: 70%;
+}
+
+.comidasdrag, .comidasdrag2{
+    margin-left: -80px;
+    gap: 20px;
+}
+
+
+    .caixa2{
+    top: 380px;
+}
+
+.caixa1{
+    margin-top: 30px;
+}
+
+.logo{
+    width: 64px;
+}
+
+.comidas img{
+    zoom: 70%;
+}
+
+#burguer1 { top: 535px; left: 660px; }
+#cachorroquente1 { top: 535px; left: 880px; }
+#rosca1 { top: 765px; left: 880px; }
+#coca1 { top: 765px; left: 660px; }
+#cookie1 { top: 820px; left: 770px; }
+#fritas1 { top: 490px; left: 770px; }
+#sorvete1 { top: 655px; left: 610px; }
+#pizza1 { top: 655px; left: 930px; }
+#maca1 { top: 535px; left: 90px; } 
+#brocolis1 { top: 535px; left: 315px; }
+#abacate1 { top: 485px; left: 200px; }
+#pera1 { top: 820px; left: 200px; }
+#uva1 { top: 655px; left: 40px; } 
+#morango1 { top: 655px; left: 365px; }
+#laranja1 { top: 765px; left: 90px; } 
+#cenoura1 { top: 765px; left: 315px; }
+}
+@media (max-width: 400px) {
+
+
+
+
+
+
+
+
+    .caixa2{
+    top: 380px;
+}
+
+.caixa1{
+    margin-top: 30px;
+}
+
+.logo{
+    width: 64px;
+}
+
+.comidas img{
+    zoom: 70%;
+}
+#burguer1 { top: 535px; left: 640px; }
+#cachorroquente1 { top: 535px; left: 860px; }
+#rosca1 { top: 765px; left: 860px; }
+#coca1 { top: 765px; left: 640px; }
+#cookie1 { top: 820px; left: 750px; }
+#fritas1 { top: 490px; left: 750px; }
+#sorvete1 { top: 655px; left: 590px; }
+#pizza1 { top: 655px; left: 910px; }
+#maca1 { top: 535px; left: 70px; } 
+#brocolis1 { top: 535px; left: 295px; }
+#abacate1 { top: 485px; left: 180px; }
+#pera1 { top: 820px; left: 180px; }
+#uva1 { top: 655px; left: 20px; } 
+#morango1 { top: 655px; left: 345px; }
+#laranja1 { top: 765px; left: 70px; } 
+#cenoura1 { top: 765px; left: 295px; }
+}
+@media (max-width: 375px) {
+
+
+
+
+
+
+
+
+#burguer1 { top: 535px; left: 610px; }
+#cachorroquente1 { top: 535px; left: 830px; }
+#rosca1 { top: 765px; left: 830px; }
+#coca1 { top: 765px; left: 610px; }
+#cookie1 { top: 820px; left: 720px; }
+#fritas1 { top: 490px; left: 720px; }
+#sorvete1 { top: 655px; left: 560px; }
+#pizza1 { top: 655px; left: 880px; }
+#maca1 { top: 535px; left: 40px; } /* Note: This might place the element off-screen */
+#brocolis1 { top: 535px; left: 265px; }
+#abacate1 { top: 485px; left: 150px; }
+#pera1 { top: 820px; left: 150px; }
+#uva1 { top: 655px; left: -10px; }  /* Note: This might place the element off-screen */
+#morango1 { top: 655px; left: 315px; }
+#laranja1 { top: 765px; left: 40px; } /* Note: This might place the element off-screen */
+#cenoura1 { top: 765px; left: 265px; }
+}
+
+
+</style>
+
+<body>
+    <img src="assets/logo-removebg-preview.png"  class="logo">
+    <span class="titulo">PROJETO MEU CORPINHO - <span class="maternal">MATERNAL III BEE E BIRD</span></span>
+    <span class="pergunta">QUAIS SÃO OS ALIMENTOS QUE AUXILIAM NA PROMOÇÃO DA SAÚDE BUCAL?</span>
+    <div class="caixas">
+        <div class="caixa1" id="caixa1" data-correct="true">
+            <img src="assets/DenteBom.png" alt="">
+        </div>
+        <div class="caixa2" id="caixa2">
+            <img src="assets/DenteRuim.png" alt="">
+        </div>
+    </div>
+
+    <div class="comidas">
+        <img src="assets/Burguer.png" id="burguer1">
+        <img src="assets/CachorroQuente.png" id="cachorroquente1">
+        <img src="assets/rOSCA.png" id="rosca1">
+        <img src="assets/Coca.png" id="coca1">
+        <img src="assets/cookie.png" id="cookie1">
+        <img src="assets/Fritas.png" id="fritas1">
+        <img src="assets/Pizza.png" id="pizza1">
+        <img src="assets/Sorvete.png" id="sorvete1">
+        <img src="assets/maca.png" id="maca1">
+        <img src="assets/brocolis.png" id="brocolis1">
+        <img src="assets/abacate.png" id="abacate1">
+        <img src="assets/pera.png" id="pera1">
+        <img src="assets/laranja.png" id="laranja1">
+        <img src="assets/morango.png" id="morango1">
+        <img src="assets/cenoura.png" id="cenoura1">
+        <img src="assets/Uva.png" id="uva1">
+    </div>
+
+    <div class="comidasdrag">
+        <img src="assets/maca.png" id="maca" data-target="caixa1" alt="" draggable="true">
+        <img src="assets/brocolis.png" id="brocolis" data-target="caixa1" alt="" draggable="true">
+        <img src="assets/abacate.png" id="abacate" data-target="caixa1" alt="" draggable="true">
+        <img src="assets/pera.png" id="pera" data-target="caixa1" alt="" draggable="true">
+        <img src="assets/laranja.png" id="laranja" data-target="caixa1" alt="" draggable="true">
+        <img src="assets/morango.png" id="morango" data-target="caixa1" alt="" draggable="true">
+        <img src="assets/cenoura.png" id="cenoura" data-target="caixa1" alt="" draggable="true">
+        <img src="assets/uva.png" id="uva" data-target="caixa1" alt="" draggable="true">
+    </div>
+    <div class="comidasdrag2">
+        <img src="assets/Burguer.png" id="burguer" data-target="caixa2" alt="" draggable="true">
+        <img src="assets/CachorroQuente.png" id="cachorroquente" data-target="caixa2" alt="" draggable="true">
+        <img src="assets/rOSCA.png" id="rosca" data-target="caixa2" alt="" draggable="true">
+        <img src="assets/Coca.png" id="coca" data-target="caixa2" alt="" draggable="true">
+        <img src="assets/cookie.png" id="cookie" data-target="caixa2" alt="" draggable="true">
+        <img src="assets/Fritas.png" id="fritas" data-target="caixa2" alt="" draggable="true">
+        <img src="assets/Pizza.png" id="pizza" data-target="caixa2" alt="" draggable="true">
+        <img src="assets/Sorvete.png" id="sorvete" data-target="caixa2" alt="" draggable="true">
+    </div>
+
+    <audio id="correct-sound" src="assets/correto.mp3"></audio>
+    <audio id="incorrect-sound" src="assets/erro.mp3"></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const correctSound = document.getElementById('correct-sound');
+            const incorrectSound = document.getElementById('incorrect-sound');
+            const items = document.querySelectorAll('[draggable="true"]');
+            const caixas = document.querySelectorAll('.caixa1, .caixa2');
+
+            items.forEach(item => {
+                item.addEventListener('dragstart', dragStart);
+            });
+
+            caixas.forEach(caixa => {
+                caixa.addEventListener('dragover', dragOver);
+                caixa.addEventListener('drop', drop);
+            });
+
+            function dragStart(e) {
+                e.dataTransfer.setData('text/plain', e.target.id);
+            }
+
+            function dragOver(e) {
+                e.preventDefault();
+            }
+
+            function drop(e) {
+                e.preventDefault();
+                const id = e.dataTransfer.getData('text');
+                const draggableElement = document.getElementById(id);
+                const dropzone = e.target.closest('.caixa1, .caixa2');
+
+                if (dropzone && dropzone.id === draggableElement.dataset.target) {
+                    correctSound.currentTime = 0; 
+                    correctSound.play();
+                    document.getElementById(id + '1').style.visibility = 'visible';
+                    draggableElement.remove(); 
+                } else {
+                    incorrectSound.currentTime = 0; 
+                    incorrectSound.play();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
